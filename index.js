@@ -5,7 +5,7 @@ const client = new Discord.Client({disableEveryone: false});
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 const mongoose = require("mongoose");
-mongoose.connect('mongodb+srv://Misil470:Mikelsilva0@cluster0.pgzic.gcp.mongodb.net/prueba?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://Misil470:mikelsilva0@cluster0.pgzic.gcp.mongodb.net/Primera?retryWrites=true&w=majority');
   const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -14,13 +14,15 @@ db.once('open', function() {
 const User = new mongoose.Schema({
   id: String,
   name: String,
-  money: Number
+  money: Number,
+  daily: Number
 });
-const Usuario = mongoose.model('prueba', User);
-const prefix = "!";
+const Usuario = mongoose.model('Usuarios', User);
+let prefix = "!";
 client.on('ready', () => {
    console.log(`Estoy listo!`);
 });
+module.exports = {Usuario};
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -41,33 +43,28 @@ fs.readdir("./commands/", (err, files) => {
   
   });
 });
-})
 client.on('message', (message) => {
   if(message.author.bot) return;
-if (message.content.startsWith(prefix+"enter")) {
-  if (Usuario.find({ id: message.author.id} == message.author.id)){
-    message.reply("Usuario ya registrado")
-  } else {
-  const Nuevo = new Usuario({ id: message.author.id,name: message.author.username,money: 0 });
-Nuevo.save(function (err, Nuevo) {
-  if (err) return console.error(err);
-  message.reply("Usuario Registrado correctamente");
-});
-}
+  if(message.channel.type === "dm") return;
+  let messageArray = message.content.split(" ");
+  let args = message.content.slice(prefix.length).trim().split(/ +/g);
+  let cmd = args.shift().toLowerCase();
+  let commandfile;
+
+  if (client.commands.has(cmd)) {
+    commandfile = client.commands.get(cmd);
+} else if (client.aliases.has(cmd)) {
+  commandfile = client.commands.get(client.aliases.get(cmd));
 }
 
-  if(message.content.startsWith('ping')) {
-    message.channel.send(`pong 🏓!!`);
-  }
-  if (message.content.startsWith(prefix+"add"))
-    Usuario.updateOne({ name:message.author.username},{money:+500}, function(err, res) {
-    });
-    const bal = Usuario.find({money: {name: message.author.username}});
-    let moneyEmbed = new Discord.MessageEmbed()
-    .setColor("#FFFFFF")
-    .setDescription(`<:Check:618736570337591296> Añadidas ${500} monedas\n\nNew Balance: ${bal}`);
-    message.channel.send(moneyEmbed)
-    console.log(bal);
+    if (!message.content.startsWith(prefix)) return;
 
-});
-client.login('NjUzMDQ0MTYyODY5OTg1Mjgw.XexQxQ.TiiRxg6shKDfjt5vr41aravX6jw');
+        
+try {
+  commandfile.run(client, message, args);
+
+} catch (e) {
+}}
+)})
+
+client.login('NjUzMDQ0MTYyODY5OTg1Mjgw.XexQxQ.vT0K3FK0Smm4JIbh_dxit5Pg1tU');
