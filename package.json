@@ -1,0 +1,31 @@
+{
+  "name": "kotoribot",
+  "version": "2.0.0",
+  "description": "A bot make it with Discord.js,Mongodb and node",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "fs": "^0.0.1-security",
+    "mongoose": "^5.12.13",
+    "parse-ms": "^2.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Misil4/discordjs-mongodb-bot.git"
+  },
+  "keywords": [
+    "mongodb",
+    "discord",
+    "discord.js"
+  ],
+  "author": "Misil4",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Misil4/discordjs-mongodb-bot/issues"
+  },
+  "homepage": "https://github.com/Misil4/discordjs-mongodb-bot#readme"
+}

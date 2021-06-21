@@ -15,7 +15,9 @@ const User = new mongoose.Schema({
   id: String,
   name: String,
   money: Number,
-  daily: Number
+  daily: Number,
+  weekly: Number,
+  work: Number
 });
 const Usuario = mongoose.model('Usuarios', User);
 let prefix = "!";

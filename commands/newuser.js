@@ -7,15 +7,15 @@ let Usuario =index.Usuario;
   return Usuario.findOne({id: message.author.id});
 }
 ShowUser().then(results => {
-    if (results.id == message.author.id){
+  console.log(results);
+    if (results.name == message.author.username){
       message.reply("Usuario ya registrado")
     } else {
-    const Nuevo = new Usuario({ id: message.author.id,name: message.author.username,money: 0 });
-  Nuevo.save(function (err, Nuevo) {
-    if (err) return console.error(err);
-    message.reply("Usuario Registrado correctamente");
-  });
-  
+      const Nuevo = new Usuario({ id: message.author.id,name: message.author.username,money: 0,daily: 0 });
+      Nuevo.save(function (err, Nuevo) {
+        if (err) return console.error(err);
+        message.reply(":white_check_mark: Usuario Registrado correctamente");
+      });
   }
 });
 }
