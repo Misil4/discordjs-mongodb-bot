@@ -1,3 +1,14 @@
+var express = require('express');
+var app     = express();
+
+app.set('port', (process.env.PORT || 8080));
+
+app.get('/', function(request, response) {
+  var result = 'App is running'
+  response.send(result);
+}).listen(app.get('port'), function() {
+  console.log('App is running, server is listening on port ', app.get('port'));
+});
 const { Double } = require("bson");
 const Discord = require("discord.js");
 const fs = require("fs");
@@ -67,6 +78,7 @@ try {
 
 } catch (e) {
 }}
-)})
+)
+})
 
 client.login('NjUzMDQ0MTYyODY5OTg1Mjgw.XexQxQ.vT0K3FK0Smm4JIbh_dxit5Pg1tU');
