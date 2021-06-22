@@ -4,7 +4,7 @@ const index = require("./../index.js");
 module.exports.run = async (client, message, args, utils) => {
   let Usuario = index.Usuario;
   if(!message.content.startsWith('!'))return;  
-  let user = message.mentions.members.first() || message.author;
+  let user = message.mentions.users.first() || message.author;
   function ShowUser() {
     return Usuario.findOne({id: user.id});
   }
@@ -15,7 +15,7 @@ console.log(user);
   var d = new Date(Date.now());
   let moneyEmbed = new Discord.MessageEmbed()
   .setColor("#FFFFFF")
-  .setImage(`${user.displayAvatarURL}`)
+  .setThumbnail(`${user.displayAvatarURL()}`)
   .setDescription(`**${results.name} Balance**\n\nDinero: ${bal}`)
   .setFooter(message.author.username+"  |  "+d.toString());
   message.channel.send(moneyEmbed)
