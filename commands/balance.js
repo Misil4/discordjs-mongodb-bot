@@ -10,13 +10,14 @@ module.exports.run = async (client, message, args, utils) => {
   }
   ShowUser().then(results => {
   let bal = results.money;
-
+console.log(user);
   if (bal === null) bal = 0;
   var d = new Date(Date.now());
   let moneyEmbed = new Discord.MessageEmbed()
   .setColor("#FFFFFF")
+  .setImage(user.avatarURL())
   .setDescription(`**${results.name} Balance**\n\nDinero: ${bal}`)
-  .setFooter(d.toString());
+  .setFooter(message.author.username+"  |  "+d.toString());
   message.channel.send(moneyEmbed)
 });
 };
