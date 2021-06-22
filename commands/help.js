@@ -6,7 +6,7 @@ module.exports.run = async (client, message,args) => {
     let helpEmbed = new Discord.MessageEmbed()
     .setColor("Random")
     .setTitle("Comandos KotoriBot")
-    .setImage(user.avatarURL())
+    .setImage(`${user.displayAvatarURL}`)
     .addField("!enter" ,"Este comando sirve para registrarse) si no has utilizado el comando no podras utilizar otros comandos de el bot")
     .addField("!balance","Con este comando puedes consultar el dinero que tienes")
     .addField("!daily" ,"Con este comando recibiras una recompensa cada 24 horas")

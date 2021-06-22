@@ -15,7 +15,7 @@ console.log(user);
   var d = new Date(Date.now());
   let moneyEmbed = new Discord.MessageEmbed()
   .setColor("#FFFFFF")
-  .setImage(user.avatarURL())
+  .setImage(`${user.displayAvatarURL}`)
   .setDescription(`**${results.name} Balance**\n\nDinero: ${bal}`)
   .setFooter(message.author.username+"  |  "+d.toString());
   message.channel.send(moneyEmbed)
