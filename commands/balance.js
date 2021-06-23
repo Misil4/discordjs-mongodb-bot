@@ -15,9 +15,10 @@ console.log(user);
   var d = new Date(Date.now());
   let moneyEmbed = new Discord.MessageEmbed()
   .setColor("#FFFFFF")
+  .setTimestamp()
   .setThumbnail(`${user.displayAvatarURL()}`)
   .setDescription(`**${results.name} Balance**\n\nDinero: ${bal}`)
-  .setFooter(message.author.username+"  |  "+d.toString());
+  .setFooter(message.author.username);
   message.channel.send(moneyEmbed)
 });
 };

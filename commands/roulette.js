@@ -53,6 +53,7 @@ let colorbad = new Discord.MessageEmbed()
     });
         let moneyEmbed1 = new Discord.MessageEmbed()
         .setColor("#FFFFFF")
+        .setTimestamp()
         .setDescription(`<:shidatulaif:615963632039231580>  Has ganado ${money} monedas\n\nMultiplicador: 15x`);
         message.channel.send(moneyEmbed1)
         console.log(`${message.author.tag} Ha ganado ${money} en el verde`)
@@ -62,6 +63,7 @@ let colorbad = new Discord.MessageEmbed()
         });
         let moneyEmbed2 = new Discord.MessageEmbed()
         .setColor("#FFFFFF")
+        .setTimestamp()
         .setDescription(`<:shidatulaif:615963632039231580>  Has ganado ${money} monedas\n\nMultiplicador: 1.5x`);
         message.channel.send(moneyEmbed2)
     } else if (!isOdd(random) && colour == 0) { // Negro
@@ -70,6 +72,7 @@ let colorbad = new Discord.MessageEmbed()
         });
         let moneyEmbed3 = new Discord.MessageEmbed()
         .setColor("#FFFFFF")
+        .setTimestamp()
         .setDescription(`<:shidatulaif:615963632039231580> Has ganado ${money} monedas\n\nMultiplicador: 2x`);
         message.channel.send(moneyEmbed3)
     } else { // Wrong
@@ -77,6 +80,7 @@ let colorbad = new Discord.MessageEmbed()
       });
         let moneyEmbed4 = new Discord.MessageEmbed()
         .setColor("#FFFFFF")
+        .setTimestamp()
         .setDescription(`<:yo_no_saber:615375645966467102> Has perdido ${money} monedas\n\nMultiplicador: 0x`);
         message.channel.send(moneyEmbed4)
     }

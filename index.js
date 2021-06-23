@@ -1,3 +1,27 @@
+var http = require("http");
+
+function startKeepAlive() {
+  setInterval( function() {
+    var options = {
+      host:'https://kotoribot13.herokuapp.com',
+      port: 80,
+      path: '/'
+    };
+    http.get(options, function(res) {
+      res.on('data', function(chunk) {
+      try {
+        console.log("HEROKU RESPONSE: " + chunk);
+      } catch (err) {
+        console.log(err.message);
+      }
+    });
+  }).on('error', function(err) {
+    console.log("Error: " + err.message);
+  });
+},20 * 60 * 1000);
+}
+startKeepAlive();
+
 var express = require('express');
 var app     = express();
 
@@ -30,12 +54,28 @@ const User = new mongoose.Schema({
   weekly: Number,
   work: Number
 });
+const character = new mongoose.Schema({
+  name: String,
+  surname: String,
+  description: String,
+  age: Number,
+  genre: String,
+  series: String,
+  picture: String,
+  atributtes: {attack: Number, defense: Number, speed: Number, salud: Number},
+  special1: {name: String, description: String, power: Number}
+});
+const Personaje = mongoose.model('Personaje', character);
 const Usuario = mongoose.model('Usuarios', User);
 let prefix = "!";
 client.on('ready', () => {
    console.log(`Estoy listo!`);
+   client.user.setPresence({
+    game: { name: 'Alpha 1 !help para comandos' },
+    status: 'online',
+   });
 });
-module.exports = {Usuario};
+module.exports = {Usuario, Personaje};
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -80,4 +120,4 @@ try {
 }}
 )
 })
-client.login('NjUzMDQ0MTYyODY5OTg1Mjgw.XexQxQ.Y_UwCr5WYKHs-68-Uzf45oxEcJA');
+client.login('NjQ4MjU3MjIwNTI5ODgxMDg5.XdrmlQ.3JWFT-1LmWtt8PydcGpDZgTkNBw');

@@ -8,6 +8,7 @@ module.exports.run = async (client, message,args) => {
     .setColor("Random")
     .setTitle("Comandos KotoriBot")
     .setThumbnail(`${user.displayAvatarURL()}`)
+    .setTimestamp()
     .addField("!enter" ,"Este comando sirve para registrarse) si no has utilizado el comando no podras utilizar otros comandos de el bot")
     .addField("!balance","Con este comando puedes consultar el dinero que tienes")
     .addField("!daily" ,"Con este comando recibiras una recompensa cada 24 horas")
@@ -15,7 +16,7 @@ module.exports.run = async (client, message,args) => {
     .addField("!roulette", "Una ruleta para la gente que le gusta perder todo su dinero, o no")
     .addField("!work", "Con este comando puedes trabajar para ganar monedas cada hora")
     .addField("Proximamente mas comandos", "proximamente")
-    .setFooter(message.author.username+"  |  "+d.toString());
+    .setFooter(message.author.username);
     message.channel.send(helpEmbed);
 }
 module.exports.help = {

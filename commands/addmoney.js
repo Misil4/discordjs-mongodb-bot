@@ -16,6 +16,7 @@ exports.run = async (client, message, args) => {
     ShowMoney().then(results => {
     let moneyEmbed = new Discord.MessageEmbed()
     .setColor("#FFFFFF")
+    .setTimestamp()
     .setDescription(`:white_check_mark:  Añadidas ${args[1]} monedas\n\nNew Balance: ${results.money}`);
     message.channel.send(moneyEmbed)
   });

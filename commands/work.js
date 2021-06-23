@@ -19,6 +19,7 @@ module.exports.run = async (client, message, args) => {
     
         let timeEmbed = new Discord.MessageEmbed()
         .setColor("#FFFFFF")
+        .setTimestamp()
         .setDescription(`<:pepemolesto:615354020290101258> Ya has trabajado\n\nPrueba otra vez en ${time.minutes}m ${time.seconds}s `);
         message.channel.send(timeEmbed)
       } else {
