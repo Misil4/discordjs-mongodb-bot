@@ -12,6 +12,7 @@ module.exports.run = async (client, message, args) => {
             message.channel.send("No hay informacion o has escrito mal el nombre");
         }
         else {
+            if (!isNaN(results.surname)) {results.surname = "";}
             let embed = new Discord.MessageEmbed()
             .setTitle(results.name+" "+results.surname)
             .addField("Edad",results.age)

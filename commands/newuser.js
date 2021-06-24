@@ -9,7 +9,7 @@ let Usuario =index.Usuario;
 }
 ShowUser().then(results => {
   if (!results) {
-      const Nuevo = new Usuario({ id: message.author.id,name: message.author.username,money: 0,daily: 0,weekly:0,work: 0 });
+      const Nuevo = new Usuario({ id: message.author.id,name: message.author.username,money: 0,daily: 0,weekly:0,work: 0,tickets: 0 });
       Nuevo.save(function (err, Nuevo) {
         if (err) return console.error(err);
         message.reply(":white_check_mark: Usuario Registrado correctamente");

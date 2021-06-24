@@ -52,7 +52,8 @@ const User = new mongoose.Schema({
   money: Number,
   daily: Number,
   weekly: Number,
-  work: Number
+  work: Number,
+  tickets: Number
 });
 const character = new mongoose.Schema({
   name: String,
@@ -63,7 +64,8 @@ const character = new mongoose.Schema({
   series: String,
   picture: String,
   atributtes: {attack: Number, defense: Number, speed: Number, salud: Number},
-  special1: {name: String, description: String, power: Number}
+  special1: {name: String, description: String, power: Number},
+  Owner: String
 });
 const Personaje = mongoose.model('Personaje', character);
 const Usuario = mongoose.model('Usuarios', User);
@@ -71,11 +73,14 @@ let prefix = "!";
 client.on('ready', () => {
    console.log(`Estoy listo!`);
    client.user.setPresence({
-    game: { name: 'Alpha 1 !help para comandos' },
-    status: 'online',
-   });
+    status: "online",
+    game: {
+      name: "me getting developed",
+      type: "STREAMING"
+    }
+  }); 
 });
-module.exports = {Usuario, Personaje};
+module.exports = {Usuario, Personaje, db};
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -120,4 +125,4 @@ try {
 }}
 )
 })
-client.login('NjUzMDQ0MTYyODY5OTg1Mjgw.XexQxQ.Y_UwCr5WYKHs-68-Uzf45oxEcJA');
+client.login('NjQ4MjU3MjIwNTI5ODgxMDg5.XdrmlQ.3JWFT-1LmWtt8PydcGpDZgTkNBw');
