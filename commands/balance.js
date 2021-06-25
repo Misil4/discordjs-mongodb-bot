@@ -17,7 +17,7 @@ console.log(user);
   .setColor("#FFFFFF")
   .setTimestamp()
   .setThumbnail(`${user.displayAvatarURL()}`)
-  .setDescription(`**${results.name} Balance**\n\nDinero: ${bal}`)
+  .setDescription(`**${results.name} Balance**\n\nDinero: ${bal}\nTickets : ${results.tickets}`)
   .setFooter(message.author.username);
   message.channel.send(moneyEmbed)
 });
