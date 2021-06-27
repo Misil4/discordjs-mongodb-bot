@@ -21,6 +21,7 @@ module.exports.run = async (client, message, args) => {
             .addField("Stats:","Ataque: "+results.atributtes.attack+"\nDefensa: "+results.atributtes.defense+"\nVelocidad: "+results.atributtes.speed+"\nSalud: "+results.atributtes.salud)
             .addField("Ataque especial",results.special1.name)
             .addField("Descripción",results.special1.description)
+            .addField("Dueño:",results.owner)
             .setImage(results.picture)
             .setColor("Random")
             .setTimestamp()

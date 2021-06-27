@@ -28,7 +28,8 @@ if (args[0] = "Ticket") {
       .setTimestamp()        
       .setFooter(results.description);
         if (random == 1){
-            message.channel.send("Has conseguido a\n\n"+embed);
+            message.channel.send("Has conseguido a");
+            message.channel.send(embed);
             Personaje.updateOne({name:results.name},{owner:message.author.id},function(err, res){});
         }
         else {
