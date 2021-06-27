@@ -65,7 +65,7 @@ const character = new mongoose.Schema({
   picture: String,
   atributtes: {attack: Number, defense: Number, speed: Number, salud: Number},
   special1: {name: String, description: String, power: Number},
-  Owner: String
+  owner: String
 });
 const Personaje = mongoose.model('Personaje', character);
 const Usuario = mongoose.model('Usuarios', User);
@@ -125,4 +125,4 @@ try {
 }}
 )
 })
-client.login('NjUzMDQ0MTYyODY5OTg1Mjgw.XexQxQ.Y_UwCr5WYKHs-68-Uzf45oxEcJA');
+client.login('');
