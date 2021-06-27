@@ -39,17 +39,78 @@ Personaje.countDocuments().exec(function (err, count) {
     .addField("Atributos","Ataque:"+personaje1.attack+"\nDefensa:"+personaje1.defense+"\nVelocidad:"+personaje1.speed+"\nSalud:"+personaje1.life)
     .setTimestamp()
     .setFooter(results1.description);
-    message.channel.send(embed+"\n**VS**");
+    message.channel.send(embed);
+    message.channel.send("**VS**");
     message.channel.send(embed1);
     message.channel.send("**COMENZANDO BATALLA**");
     let turno = 0;
-    while (personaje.life <1 || personaje1.life <1) {
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+    let random;
+    let random1;
+    let daño = personaje.attack-personaje1.defense;
+    let daño1 = personaje1.attack-personaje.defense;
+    let critico = daño*2;
+    let critico1 = daño1*2;
+    console.log(critico);
+    while (personaje.life >1 || personaje1.life >1) {
         turno++;
+        daño = personaje.attack-personaje1.defense;
+        daño1 = personaje1.attack-personaje.defense;
+        random = getRandomInt(0, 5);
+        random1 =getRandomInt(0, 5);
+        if (personaje.life<0 || personaje1.life<0)break;
+        console.log(turno);
         if (personaje.speed > personaje1.speed) {
-            let daño = personaje.attack-personaje1.defense;
-            message.channel.send("**Turno** "+turno+"\n"+results.name+" ha hecho "+daño+" a "+results1.name);
+            if (random ==1){
+                daño = critico;
+            message.channel.send("**CRITICO** de "+results.name)}
+            else if(random == 2) {
+                daño = 0;
+                message.channel.send("ataque de "+results1.name+" **EVITADO**")
+            }
+            if ( random1 ==1) {
+                daño1 = critico1;
+                message.channel.send("**CRITICO** de "+results1.name)}
+            else if(random1 == 2) {
+                daño1 = 0;
+                message.channel.send("ataque de "+results.name+" **EVITADO**")
+            }
+            console.log(daño);
+            message.channel.send("**Turno** "+turno+"\n"+results.name+" ha hecho "+daño+" a "+results1.name+"\nVida restante: "+personaje1.life);
+            personaje1.life-=daño;
+            message.channel.send("**Turno** "+turno+"\n"+results1.name+" ha hecho "+daño1+" a "+results.name+"\nVida restante: "+personaje.life);
+            personaje.life-=daño1;
+    }
+        else {
+            if (random ==1){
+                daño = critico;
+            message.channel.send("**CRITICO** de "+results.name)}
+            else if(random == 2) {
+                daño = 0;
+                message.channel.send("ataque de "+results1.name+" **EVITADO**")
+            }
+            if ( random1 ==1) {
+                daño1 = critico1;
+                message.channel.send("**CRITICO** de "+results1.name)}
+            else if(random1 == 2) {
+                daño1 = 0;
+                message.channel.send("ataque de "+results.name+" **EVITADO**")
+            }
+            console.log(daño);
+            message.channel.send("**Turno** "+turno+"\n"+results1.name+" ha hecho "+daño1+" a "+results.name+"\nVida restante: "+personaje.life);
+            personaje.life-=daño1;
+            message.channel.send("**Turno** "+turno+"\n"+results.name+" ha hecho "+daño+" a "+results1.name+"\nVida restante: "+personaje1.life);
+            personaje1.life-=daño;
         }
     }
+        if (personaje.life<1 && personaje1.life>1) {
+            message.channel.send("**ENHORABUENA** Ha ganado "+results1.name);
+        }
+        else if (personaje1.life<1 && personaje.life >1) {
+            message.channel.send("**ENHORABUENA** Ha ganado "+results.name);
+        }
      });
     });
     });
