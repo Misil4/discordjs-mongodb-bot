@@ -5,10 +5,10 @@ module.exports.run = async (client, message, args) => {
     let Usuario = index.Usuario;
     let Personaje = index.Personaje;
     let random = Math.random(0, 10);
+    let tickets;
 if (!message.content.startsWith("!"))return;
 Usuario.findOne({id:message.author.id}).then(results =>{
-if (results.tickets < 1){message.channel.send("No tienes suficientes tickets");}
-});
+if (results.tickets <1)return;
 if (args[0] = "Ticket") {
     Usuario.updateOne({id: message.author.id},{$inc: {tickets:-1}},function(err, res){});
     Personaje.countDocuments().exec(function (err, count) {
@@ -42,6 +42,7 @@ if (args[0] = "Ticket") {
 else {
     message.channel.send("El articulo no existe");
 }
+});
 }
 module.exports.help = {
     name: "usar",
