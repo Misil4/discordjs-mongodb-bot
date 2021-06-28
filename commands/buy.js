@@ -12,6 +12,7 @@ if (!results) {
     message.channel.send("No te has registrado");
 }
 console.log(args[0]);
+if (results.money<1000)message.channel.send("No tienes dinero suficiente");
 if (args[0]== "Ticket") {
     Usuario.updateOne({id:message.author.id},{$inc: {money:-1000} }, function(err, res) {});
     Usuario.updateOne({id:message.author.id},{$inc: {tickets:+1}}, function(err, res){});
