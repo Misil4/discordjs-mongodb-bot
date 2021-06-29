@@ -70,15 +70,9 @@ const character = new mongoose.Schema({
 const Personaje = mongoose.model('Personaje', character);
 const Usuario = mongoose.model('Usuarios', User);
 let prefix = "!";
-client.on('ready', () => {
+client.on('ready', async () => {
    console.log(`Estoy listo!`);
-   client.user.setPresence({
-    status: "online",
-    game: {
-      name: "me getting developed",
-      type: "STREAMING"
-    }
-  }); 
+   await client.user.setActivity("Alpha 5 !h para ver todos los comandos");
 });
 module.exports = {Usuario, Personaje, db};
 
@@ -125,4 +119,4 @@ try {
 }}
 )
 })
-client.login('NjQ4MjU3MjIwNTI5ODgxMDg5.XdrmlQ.jVaVRncmIsHgq_NGlxjJVk3rgv0');
+client.login('NjUzMDQ0MTYyODY5OTg1Mjgw.XexQxQ.wNPRTw9__VYiMcscu2WbeKG8kUc');

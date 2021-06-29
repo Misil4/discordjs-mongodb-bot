@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
 if (!message.content.startsWith("!"))return;
 Personaje.findOne({name : args[0]}).then(results =>{
     if (!results)message.reply("el personaje no existe");
-if (results.owner != message.author.id)message.reply("Ese personaje no es tuyo");
+if (results.owner != message.author.id)return;
 personaje = new Character(results.atributtes.attack,results.atributtes.defense,results.atributtes.speed,results.atributtes.salud,results.special1.power);
 Personaje.countDocuments().exec(function (err, count) {
 
@@ -49,8 +49,8 @@ Personaje.countDocuments().exec(function (err, count) {
       }
     let random;
     let random1;
-    let daño = personaje.attack-personaje1.defense;
-    let daño1 = personaje1.attack-personaje.defense;
+    let daño = personaje.attack-(personaje1.defense/2);
+    let daño1 = personaje1.attack-(personaje.defense/2);
     let critico = daño*2;
     let critico1 = daño1*2;
     console.log(critico);
